@@ -1,11 +1,22 @@
+
+rm(list=ls())
+
+# Libraries and packages ----------------
+
 library(tidyverse)
 library(readxl)
+
+
+# Read data ----------------
 
 sns <- read_excel("../data/SNS_Complete_Demos_Risk.xlsx")
 View(sns)
 dim(sns)
 
 n <- nrow(sns)
+
+
+# Demographic characteristics ----------------
 
 #age
 year_of_survey <- 2021
@@ -67,7 +78,7 @@ table(sns$rectal_ct2, exclude = NULL) #1st chlamydua test
 # 1 Detected 
 # 3 Invalid
 
-# Outcomes GC/CT (combine throat, rectal, urine)
+# Outcomes GC/CT (combine throat, rectal, urine) ----------------
 # See here: https://docs.google.com/document/d/18yTkd10ehanokf_pQ798YjQy-kc19mJbWdeLHDsdzg4/edit#bookmark=id.lzk9r1ehjhh6
 
 ## CT
@@ -127,3 +138,6 @@ length(gc_or_ct)
 
 gc_and_ct <- sort(unique(intersect(gc, ct)))
 length(gc_and_ct)
+
+
+# Covariates on network members ----------------
