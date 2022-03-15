@@ -1,0 +1,9 @@
+# Directories
+data/
+out/
+
+# Standard data format files
+*.csv
+*.RData
+*.html
+
