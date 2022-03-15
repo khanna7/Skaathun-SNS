@@ -140,4 +140,93 @@ gc_and_ct <- sort(unique(intersect(gc, ct)))
 length(gc_and_ct)
 
 
-# Covariates on network members ----------------
+# Substance Use covariates on network members ----------------
+# See https://docs.google.com/document/d/18yTkd10ehanokf_pQ798YjQy-kc19mJbWdeLHDsdzg4/edit#bookmark=id.u4ifo5y1ozr8
+
+## alcolhol in network
+table(sns$frnd_drug_01___1, exclude = NULL)
+table(sns$frnd_drug_02___1, exclude = NULL)
+table(sns$frnd_drug_03___1, exclude = NULL)
+table(sns$frnd_drug_04___1, exclude = NULL)
+table(sns$frnd_drug_05___1, exclude = NULL)
+
+alc_in_network <- cbind(
+  sns$frnd_drug_01___1,
+  sns$frnd_drug_02___1,
+  sns$frnd_drug_03___1,
+  sns$frnd_drug_04___1,
+  sns$frnd_drug_05___1
+)
+
+## marijuana in network
+mj_in_network <- cbind(
+  sns$frnd_drug_01___2,
+  sns$frnd_drug_02___2,
+  sns$frnd_drug_03___2,
+  sns$frnd_drug_04___2,
+  sns$frnd_drug_05___2
+)
+
+## heroin in network
+heroin_in_network <- cbind(
+  sns$frnd_drug_01___3,
+  sns$frnd_drug_02___3,
+  sns$frnd_drug_03___3,
+  sns$frnd_drug_04___3,
+  sns$frnd_drug_05___3
+)
+
+## crack or cocaine in network
+crack.cocaine_in_network <- cbind(
+  (sns$frnd_drug_01___4 + sns$frnd_drug_01___5),
+  (sns$frnd_drug_02___4 + sns$frnd_drug_02___5),
+  (sns$frnd_drug_03___4 + sns$frnd_drug_03___5),
+  (sns$frnd_drug_04___4 + sns$frnd_drug_04___5),
+  (sns$frnd_drug_05___4 + sns$frnd_drug_05___5)
+)
+
+## meth in network
+meth_in_network <- cbind(
+  sns$frnd_drug_01___6,
+  sns$frnd_drug_02___6,
+  sns$frnd_drug_03___6,
+  sns$frnd_drug_04___6,
+  sns$frnd_drug_05___6
+)
+
+## ghb in network
+ghb_in_network <- cbind(
+  sns$frnd_drug_01___7,
+  sns$frnd_drug_02___7,
+  sns$frnd_drug_03___7,
+  sns$frnd_drug_04___7,
+  sns$frnd_drug_05___7
+)
+
+## opioids in network
+opioids_in_network <- cbind(
+  sns$frnd_drug_01___8,
+  sns$frnd_drug_02___8,
+  sns$frnd_drug_03___8,
+  sns$frnd_drug_04___8,
+  sns$frnd_drug_05___8
+)
+
+## ecstasy in network
+ecstasy_in_network <- cbind(
+  sns$frnd_drug_01___9,
+  sns$frnd_drug_02___9,
+  sns$frnd_drug_03___9,
+  sns$frnd_drug_04___9,
+  sns$frnd_drug_05___9
+)
+
+## ketamine in network
+ketamine_in_network <- cbind(
+  sns$frnd_drug_01___10,
+  sns$frnd_drug_02___10,
+  sns$frnd_drug_03___10,
+  sns$frnd_drug_04___10,
+  sns$frnd_drug_05___10
+)
+
