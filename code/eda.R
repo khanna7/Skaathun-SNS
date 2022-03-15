@@ -67,4 +67,63 @@ table(sns$rectal_ct2, exclude = NULL) #1st chlamydua test
 # 1 Detected 
 # 3 Invalid
 
-# GC 1st and 2nd test (combine throat, rectal, urine)
+# Outcomes GC/CT (combine throat, rectal, urine)
+# See here: https://docs.google.com/document/d/18yTkd10ehanokf_pQ798YjQy-kc19mJbWdeLHDsdzg4/edit#bookmark=id.lzk9r1ehjhh6
+
+## CT
+table(sns$rectal_ct1, exclude = NULL)
+table(sns$rectal_ct2, exclude = NULL)
+table(sns$throat_ct1, exclude = NULL)
+table(sns$throat_ct2, exclude = NULL)
+table(sns$urine_ct1, exclude = NULL)
+table(sns$urine_ct2, exclude = NULL)
+
+rectal_ct <- 
+  union(
+    which(sns$rectal_ct1 == 1), which(sns$rectal_ct2 == 1)
+  )
+
+throat_ct <- 
+  union(
+    which(sns$throat_ct1 == 1), which(sns$throat_ct2 == 1)   
+  )
+
+urine_ct <- 
+  union(
+    which(sns$urine_ct1 == 1), which(sns$urine_ct2 == 1)   
+  )
+
+ct <- unique(c(rectal_ct, throat_ct, urine_ct))
+length(ct)
+
+## GC
+table(sns$rectal_gc1, exclude = NULL)
+table(sns$rectal_gc2, exclude = NULL)
+table(sns$throat_gc1, exclude = NULL)
+table(sns$throat_gc2, exclude = NULL)
+table(sns$urine_gc1, exclude = NULL)
+table(sns$urine_gc2, exclude = NULL)
+
+rectal_gc <- 
+  union(
+    which(sns$rectal_gc1 == 1), which(sns$rectal_gc2 == 1)
+  )
+
+throat_gc <- 
+  union(
+    which(sns$throat_gc1 == 1), which(sns$throat_gc2 == 1)   
+  )
+
+urine_gc <- 
+  union(
+    which(sns$urine_gc1 == 1), which(sns$urine_gc2 == 1)   
+  )
+
+gc <- unique(c(rectal_gc, throat_gc, urine_gc))
+length(gc)
+
+gc_or_ct <- sort(unique(union(gc, ct)))
+length(gc_or_ct)
+
+gc_and_ct <- sort(unique(intersect(gc, ct)))
+length(gc_and_ct)
