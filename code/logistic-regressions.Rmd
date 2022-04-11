@@ -1,0 +1,48 @@
+---
+title: "Logistic Regression for Substance Use and Networks Project: Britt Skaathun and Aditya Khanna"
+output: html_notebook
+---
+
+## Introduction
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook containing code for our logistic regression models interwoven with narrative text to provide materials for the Methods and Results section of the manuscript. The computer code is also available in a public [GitHub repository](https://github.com/khanna7/Skaathun-SNS/). 
+
+```{r, results='hide', echo=FALSE, message=FALSE}
+# Libraries ----------
+rm(list=ls())
+library(dplyr)
+
+```
+
+
+```{r, results='hide', echo=FALSE, message=FALSE}
+# Data  ----------
+load("eda.RData")
+```
+
+
+```{r, results='hide', echo=FALSE, message=FALSE}
+# Prepare covariates
+cov_dt <- 
+  cbind.data.frame(
+    #gender: very little variation in gender
+    age = age,
+    race = race_4cat,
+    sex_pt_num_3m = sns$sex_part_num
+  )
+
+```
+
+```{r, results='hide', echo=FALSE, message=FALSE}
+# PFit alcohol logistic regression
+alc_log_dt <- 
+  cbind.data.frame(
+    #gender: very little variation in gender
+    age = age,
+    race = race_4cat,
+    sex_pt_num_3m = sns$sex_part_num,
+    gc_or_ct_outcome = gc_or_ct_outcome,
+    alc_net_prop = alc_net_prop
+  )
+
+```
