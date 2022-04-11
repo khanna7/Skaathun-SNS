@@ -9,12 +9,18 @@ library(readxl)
 
 # Read data ----------------
 
+## full survey
 sns <- read_excel("../data/SNS_Complete_Demos_Risk.xlsx")
 View(sns)
 dim(sns)
 
 n <- nrow(sns)
 
+
+## reported degrees
+n_friends <- read.csv("/Users/adityakhanna/Dropbox\ (Brown)/STI\ Paper\ Aditya\ Britt/Data/ID_number_total_friends.csv") 
+View(n_friends)
+reported_degrees <- as.numeric(n_friends$num_friends)
 
 # Demographic characteristics ----------------
 
@@ -234,9 +240,8 @@ ketamine_in_network <- cbind(
 # Function to compute substance use network proportions ----------------
 
 network_proportion <- function(su_mat){
-  apply(su_mat, 1, function (x)
-    {sum(x)/length(x)}
-        )
+  network_sum <- apply(su_mat, 1, sum)
+  return(network_sum/reported_degrees)
 }
 
 
