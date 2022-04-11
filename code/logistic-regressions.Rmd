@@ -1,5 +1,5 @@
 ---
-title: "Logistic Regression for Substance Use and Networks Project: Britt Skaathun and Aditya Khanna"
+title: "GC/CT Modeling in San Diego"
 output: html_notebook
 ---
 
@@ -7,7 +7,7 @@ output: html_notebook
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook containing code for our logistic regression models interwoven with narrative text to provide materials for the Methods and Results section of the manuscript. The computer code is also available in a public [GitHub repository](https://github.com/khanna7/Skaathun-SNS/). 
 
-```{r, results='hide', echo=FALSE, message=FALSE}
+```{r, results='show', echo=TRUE, message=FALSE}
 # Libraries ----------
 rm(list=ls())
 library(dplyr)
@@ -15,11 +15,12 @@ library(dplyr)
 ```
 
 
-```{r, results='hide', echo=FALSE, message=FALSE}
+```{r, results='show', echo=TRUE, message=FALSE}
 # Data  ----------
 load("eda.RData")
 ```
 
+The model below c
 
 ```{r, results='hide', echo=FALSE, message=FALSE}
 # Prepare covariates
@@ -33,7 +34,10 @@ cov_dt <-
 
 ```
 
-```{r, results='hide', echo=FALSE, message=FALSE}
+## Assessing network alcohol use as a GC/CT predictor
+
+### Model Fit
+```{r, results='show', echo=TRUE, message=FALSE}
 # PFit alcohol logistic regression
 alc_log_dt <- 
   cbind.data.frame(
@@ -45,4 +49,16 @@ alc_log_dt <-
     alc_net_prop = alc_net_prop
   )
 
+alc_glm <- glm(data = alc_log_dt,
+               formula = gc_or_ct_outcome ~ .,
+               family = binomial
+)
+
+summary(alc_glm)
 ```
+
+## Next Steps
+Fit similar logistic regression models for:  
+ - Marijuana use in networks    
+ - Stimulant use in networks defined as crack/cocaine or meth use  
+ - Compute bootstrapped confidence intervals as we did in NVL paper  

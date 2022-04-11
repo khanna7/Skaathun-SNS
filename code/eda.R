@@ -38,6 +38,18 @@ sum(sns$race___4)#Asian
 sum_other <- nrow(sns)-sum(sns$race___1)+sum(sns$race___7)+sum(sns$race___4)
 sum_other
 
+
+race_4cat <- rep(NA, n)
+
+race_4cat[which(sns$race___1 == 1)] <- "White"
+race_4cat[which(sns$race___7 == 1)] <- "Black"
+race_4cat[which(sns$race___4 == 1)] <- "Asian"
+
+table(race_4cat, exclude = NULL)
+race_4cat <- as.factor(replace_na(race_4cat, "Other"))
+race_4cat <- relevel(race_4cat, ref = "White")
+table(race_4cat, exclude = NULL)  
+
 #ethnicity (hisp vs not)
 table(sns$hispanic, exclude = NULL) #1=hispanic; 2=non-hispanic; 4=not want to report
 
@@ -145,6 +157,9 @@ length(gc_or_ct)
 gc_and_ct <- sort(unique(intersect(gc, ct)))
 length(gc_and_ct)
 
+gc_or_ct_outcome <- rep(0, n)
+gc_or_ct_outcome[gc_or_ct] <- 1
+table(gc_or_ct_outcome, exclude=NULL)
 
 # Substance Use covariates on network members ----------------
 # See https://docs.google.com/document/d/18yTkd10ehanokf_pQ798YjQy-kc19mJbWdeLHDsdzg4/edit#bookmark=id.u4ifo5y1ozr8
@@ -273,3 +288,6 @@ table(ecstasy_net_prop); summary(ecstasy_net_prop)
 table(ketamine_net_prop); summary(ketamine_net_prop)
 table(stimulant_net_prop); summary(stimulant_net_prop)
 
+
+# Save image ----------------
+save.image(file="eda.RData")
