@@ -236,13 +236,17 @@ ketamine_in_network <- cbind(
   sns$frnd_drug_05___10
 )
 
+## stimulants in network
+stimulant_in_network <- crack.cocaine_in_network + meth_in_network
 
+ 
 # Function to compute substance use network proportions ----------------
 
 network_proportion <- function(su_mat){
   network_sum <- apply(su_mat, 1, sum)
   return(network_sum/reported_degrees)
 }
+
 
 
 # Compute proportions of persons in networks using each substance ----------------
@@ -256,6 +260,7 @@ ghb_net_prop <- network_proportion(ghb_in_network)
 opioids_net_prop <- network_proportion(opioids_in_network)
 ecstasy_net_prop <- network_proportion(ecstasy_in_network)
 ketamine_net_prop <- network_proportion(ketamine_in_network)
+stimulant_net_prop <- network_proportion(stimulant_in_network)
 
 table(alc_net_prop); summary(alc_net_prop)
 table(mj_net_prop); summary(mj_net_prop)
@@ -266,3 +271,5 @@ table(ghb_net_prop); summary(ghb_net_prop)
 table(opioids_net_prop); summary(opioids_net_prop)
 table(ecstasy_net_prop); summary(ecstasy_net_prop)
 table(ketamine_net_prop); summary(ketamine_net_prop)
+table(stimulant_net_prop); summary(stimulant_net_prop)
+
