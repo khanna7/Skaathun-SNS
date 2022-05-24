@@ -10,7 +10,7 @@ library(readxl)
 # Read data ----------------
 
 ## full survey
-sns <- read_excel("../data/SNS_Complete_Demos_Risk.xlsx")
+sns <- read_excel("../data/SNS_racecat_propsexwithnet.xlsx")
 View(sns)
 dim(sns)
 
