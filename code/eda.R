@@ -289,5 +289,10 @@ table(ketamine_net_prop); summary(ketamine_net_prop)
 table(stimulant_net_prop); summary(stimulant_net_prop)
 
 
+# Write outcome to file ----------------
+
+# write.csv(gc_or_ct_outcome, file="gc_or_ct_outcome.csv")
+
+
 # Save image ----------------
 save.image(file="eda.RData")
