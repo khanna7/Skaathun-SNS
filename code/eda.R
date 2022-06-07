@@ -39,7 +39,7 @@ sum_other <- nrow(sns)-sum(sns$race___1)+sum(sns$race___7)+sum(sns$race___4)
 sum_other
 
 
-race_4cat <- rep(NA, n)
+race_4cat <- rep(NA, n) #!!! THIS CAN BE IGNORED. USE BRITT's 'race4cat' instead
 
 race_4cat[which(sns$race___1 == 1)] <- "White"
 race_4cat[which(sns$race___7 == 1)] <- "Black"
