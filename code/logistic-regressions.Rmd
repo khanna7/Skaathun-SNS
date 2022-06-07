@@ -107,4 +107,9 @@ members of `r length(which(crack_sum_in_network == 0))` participants) or
 Fit similar logistic regression models for:  
  - ~~Marijuana use in networks~~    
  - ~~Stimulant use in networks defined as crack/cocaine or meth use~~ (though the reported rates seem to be quite low)  
- - Compute bootstrapped confidence intervals as we did in NVL paper.  
+ - Compute bootstrapped confidence intervals as we did in NVL paper.        
+  
+## Save data
+```{r, results='hide', echo=FALSE, message=FALSE}
+save.image("logistic-regression.RData")
+```
